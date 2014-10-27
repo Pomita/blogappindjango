@@ -1,0 +1,29 @@
+<html>
+
+<head>
+
+<style>
+#elementsontop > * { 
+display: inline 
+}
+</style>
+
+<div id ="elementsontop">
+<h1> Blogging App </h1>
+<h3> Hi {{ username }} </h3>
+<h4> <a href="/blogapp/signout/">Sign Out</a> </h4>
+</div>
+
+</head>
+
+<body>
+
+<form action="/blogapp/updateblog/" method="post">{% csrf_token %}
+    {{ form }}
+    <input type="hidden" name="blogid" value= {{ blogid }} >
+    <input type="submit" value="Update">
+</form>
+
+</body>
+
+</html>

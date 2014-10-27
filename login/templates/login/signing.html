@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/blogapp/checkuser/" method="POST">{% csrf_token %}
+Sign In:<br>
+username:<input type="text" name="signinuser"><br>
+password:<input type="password" name="signinpassword"><br>
+<input type="submit" value="sign in" name="signin"><br>
+<br>
+Create a New Account:<br>
+username:<input type="text" name="signupuser"><br>
+password:<input type="password" name="signuppassword"><br>
+<input type="submit" value="sign up" name="signup"><br>
+</form>
+</body>
+</html>

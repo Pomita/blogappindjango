@@ -1,0 +1,30 @@
+<html>
+
+<head>
+
+<style>
+
+#elementsontop > * { 
+display: inline 
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id ="elementsontop">
+<h1> Blogging App </h1>
+<h3> Hi {{ username }} </h3>
+<h4> <a href="/blogapp/signout/">Sign Out</a> </h4>
+</div>
+
+<form action="/blogapp/createblog/" method="post">{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Save" />
+</form>
+
+</body>
+
+</html>

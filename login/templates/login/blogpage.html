@@ -1,0 +1,56 @@
+<html>
+
+<head>
+
+<style>
+
+#elementsontop > * { 
+display: inline 
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id ="elementsontop">
+<h1> Blogging App </h1>
+<h4> Hi {{ username }} </h4>
+<h5> <a href="/blogapp/signout/">Sign Out</a> </h5>
+<h3> <a href="/blogapp/createblog/">CREATE A BLOG</a> </h3>
+</div>
+
+<form action="/blogapp/blogpage/" method="POST">{% csrf_token %}
+<h2> {{ blog.title }} </h2>
+<h5> Created by {{ blog.author}} on {{ blog.created }} </h5>
+<h3> {{ blog.body|linebreaks }} </h3>
+<input type="hidden" name="blogid" value= {{ blog.pk }}>
+<input type="submit" value="edit this blog" name="editblog">
+<input type="submit" value="delete this blog" name="deleteblog">
+</form>
+
+<br>
+<br>
+
+<h2> Comments: </h2>
+
+<form action="/blogapp/addcomment/" method="POST">{% csrf_token %}
+<textarea name="commentbox" rows="10" cols="30">
+</textarea>
+<input type="hidden" name="blogid" value= {{ blog.pk }}>
+<input type="submit" value="add your comment" name="addcomment">
+</form>
+
+<br>
+
+{% for eachcomment in commentlist %}
+	<h5> Created by {{ eachcomment.author}} on {{ eachcomment.created }} </h5>
+	<h3> {{ eachcomment.body|linebreaks }} </h3>
+        <br>
+
+{% endfor %}
+
+</body>
+
+</html>
